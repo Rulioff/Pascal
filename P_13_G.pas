@@ -1,17 +1,24 @@
-﻿{P_13_G Бортовой компьютер.}
+﻿{P_13_G Орлянка.}
 var
-  Street_A, Street_B, Street_C, Street_D, Street_E, Barrier_F, Barrier_G : boolean; Open : string;
+  Coin_1, Coin_2, Coin_3 : boolean; Toss : string;
 begin
-  Write('Введите 1 если улица A свободна '); Readln(Open);   Street_A := Open = '1';
-  Write('Введите 1 если улица B свободна '); Readln(Open);   Street_B := Open = '1';
-  Write('Введите 1 если улица C свободна '); Readln(Open);   Street_C := Open = '1';
-  Write('Введите 1 если улица D свободна '); Readln(Open);   Street_D := Open = '1';
-  Write('Введите 1 если улица E свободна '); Readln(Open);   Street_E := Open = '1';
-  Write('Введите 1 если шлагбаум F опущен '); Readln(Open);   Barrier_F := Open = '1';
-  Write('Введите 1 если шлагбаум G опущен '); Readln(Open);   Barrier_G := Open = '1';
-  Open  := 'В школу нужно идти пеше.';
-  if Street_A and Street_B and not Barrier_F or Street_C and Street_D or Street_E and not Barrier_G
-     then Open := 'От дома до школы можно доехать на автобусе.';
-     Writeln(Open);
+  Write('Введите 1 если на первой монете выпал орёл '); Readln(Toss);   Coin_1 := Toss = '1';
+  Write('Введите 2 если на первой монете выпал орёл '); Readln(Toss);   Coin_2 := Toss = '1';
+  Write('Введите 3 если на первой монете выпал орёл '); Readln(Toss);   Coin_3 := Toss = '1';
+
+  Toss  := 'Выигрывает казино.';
+  if Coin_1 and Coin_2 and Coin_3
+     then Toss := 'Выиграл игрок 1'
+  else if not Coin_1 and not Coin_2 and not Coin_3
+     then Toss := 'Выиграл игрок 2'
+  else if not (Coin_1 = Coin_2) and (Coin_2 = Coin_3)
+     then Toss := 'Выиграл игрок 3'
+  else if not Coin_1 and Coin_2 and Coin_3
+     then Toss := 'Выиграл игрок 4'
+  else if Coin_1 and (Coin_2 = Coin_3)
+     then Toss := 'Выиграл игрок 5'
+  else Toss := 'Казино закрывается';
+
+     Writeln(Toss);
      Writeln('Для выхода нажмите пожалуйста Enter');   Readln;
 end.
