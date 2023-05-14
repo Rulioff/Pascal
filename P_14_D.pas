@@ -12,14 +12,14 @@ begin
    write('Введите сторону B2  '); readln(sideB2);
    square2 := sideA2 * sideB2;
 
-     maxSquare := square1 > square2;
-     if maxSquare then maxSide1 := sideA1 < sideB1;
+     maxSquare := square1 > square2; {Определение участка с максимальной площадью.}
+     if maxSquare then maxSide1 := sideA1 < sideB1;    {Если 1 участок больше.}
      if maxSquare and maxSide1
           then writeln('Ширина участка с максимальной площадью = ', sideA1, ', а длина = ', sideB1);
      if maxSquare and not maxSide1
           then writeln('Ширина участка с максимальной площадью = ', sideB1, ', а длина = ', sideA1);
      
-     if not maxSquare then maxSide2 := sideA2 < sideB2;
+     if not maxSquare then maxSide2 := sideA2 < sideB2;     {Если 1 участок больше.}
      if not maxSquare and maxSide2
           then writeln('Ширина участка с максимальной площадью = ', sideA2, ', а длина = ', sideB2);
      if not maxSquare and not maxSide2
