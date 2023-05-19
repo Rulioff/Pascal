@@ -10,12 +10,14 @@ begin
   readln(quantity);
   priceR := rub * quantity;
   priceK := kop * quantity;
+  
   repeat
+    if priceK < 100 then break;
     if priceK >= 100 then begin
       priceR := priceR + 1;
       priceK := priceK - 100;
     end;  
-  until priceK >= 100;
+  until false;
 
   writeln('На ', quantity, ' учебников потрачено: ', priceR, ' рублей и ', priceK, ' копеек.');
 end.
