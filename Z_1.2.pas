@@ -1,19 +1,15 @@
 ﻿{Z_1.2 Одинаковые цифры.}
-var n : array of integer;
+var dig : char;
   i : integer;
+  number : string;
   bool : boolean;
   
 begin  
-  repeat
+  for i := 1 to 10 do
     writeln('Введите двузначное число с одинаковым значением разряда: ');
-    readln(i);
-    if i<>0 then begin
-      SetLength(n, Length(n) +1 );
-      n[n.Length - 1] := trunc(Log10(abs(i))) + 1;
-    end;
-   until i= 0;
-    if (n[0]) = (n[1])
+    readln(dig);
+    if (length(number) = 2) and ((number[i]) = (number[i + 1]))
       then bool := true;
-    for i := 0 to n.Length - 1 do writeln(n[i], ' ', (bool));
-
+  for i := 1 to 10 do
+   writeln(number[i], ' ', (bool));
 end.
