@@ -1,4 +1,4 @@
-﻿{Z_1.2 Одинаковые цифры.}
+﻿﻿{Z_1.2 Одинаковые цифры.}
 var number, dig, count : integer;
   bool : boolean;
   
@@ -11,7 +11,6 @@ begin
       number := number div 10;
       inc(dig);
     end;
-    //writeln(number);
     
     if (trunc(count/10) = count mod 10) and (dig = 2)
       then bool := true;
