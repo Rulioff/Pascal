@@ -3,8 +3,8 @@ var
   coin_1, coin_2, coin_3 : boolean; toss, win : string;
 begin
   Write('Введите 1 если на первой монете выпал орёл '); Readln(toss);   coin_1 := toss = '1';
-  Write('Введите 2 если на первой монете выпал орёл '); Readln(toss);   coin_2 := toss = '1';
-  Write('Введите 3 если на первой монете выпал орёл '); Readln(toss);   coin_3 := toss = '1';
+  Write('Введите 2 если на второй монете выпал орёл '); Readln(toss);   coin_2 := toss = '1';
+  Write('Введите 3 если на третей монете выпал орёл '); Readln(toss);   coin_3 := toss = '1';
 
   toss  := 'Выигрывает казино.';
   if coin_1 and coin_2 and coin_3
