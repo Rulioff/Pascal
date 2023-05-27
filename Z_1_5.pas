@@ -1,7 +1,7 @@
 ﻿{Z_1_5 Размещение палаток (1)}
 var campingN, campingM, tentK, tentQ, buffer : integer;
 begin
-  repeat
+
     write('Введите ширину кемпинга в метрах: ');
     readln(campingN);
   
@@ -18,9 +18,7 @@ begin
     readln(tentK);
     
     tentQ := (campingN div tentK) * (campingM div tentK);
-    
-  until true;
-  
+      
   writeln('Кемпинг площадью ', campingN, ' на ', campingM, ' метров вмещает ', tentQ, ' палток.')
   
 end.
