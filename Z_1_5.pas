@@ -8,12 +8,6 @@ begin
     write('Введите длину кемпинга в метрах: ');
     readln(campingM);
     
-    if campingN > campingM then begin //Проверка длины и ширины.
-       buffer := campingN;
-       campingN := campingM;
-       campingM := buffer;
-     end;
-  
     write('Введите длину сторон квадратной палатки в метрах: ');
     readln(tentK);
     
