@@ -1,7 +1,6 @@
 ﻿{Z_1_7 Укладка коробок.}
 var drawerL, drawerM, drawerN, boxP, boxQ, boxR, boxCount, buffer : integer;
 begin
-  repeat
     write('Введите 1-ю сторону ящика в сантиметрах: ');
     readln(drawerL);
   
@@ -33,9 +32,8 @@ begin
        buffer := boxP;
        boxP := boxQ;
        boxQ := buffer;
-    end;
-       
-           
+    end;     
+          
     write('Введите 3-ю сторону коробки в сантиметрах: ');
     readln(boxR);
     
@@ -46,9 +44,7 @@ begin
     end;
        
     boxCount := (drawerL div boxR) * (drawerM div boxQ) * (drawerN div boxP);
-    
-  until true;
-  
+
   writeln('Ящик шириной ', drawerM, ', длиной ', drawerL, ' и высотой ', drawerN, ' сантиметров вмещает ', boxCount, ' коробок.')
   
 end.
