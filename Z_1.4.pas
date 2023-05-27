@@ -1,21 +1,21 @@
 ﻿{Z_1.4 Количество цифр в числе.}
-var summand, addend, amount : integer;
+var number, numberTwo, amount : integer;
   dig : byte;
   
 begin  
     write('Введите первое слагаемое: ');
-    readln(summand);
+    readln(number);
     
     write('Введите второе слагаемое: ');
-    readln(addend);
+    readln(numberTwo);
     
     dig := 0;
-    amount := summand + addend;
+    amount := number + numberTwo;
 
     while amount > 0 do begin
       amount := amount div 10;
       inc(dig);
     end;
 
-    writeln('Сумма чисел: ', summand, ' и ', addend, ' содержит ', dig, ' цифр.');
+    writeln('Сумма чисел: ', number, ' и ', numberTwo, ' содержит ', dig, ' цифр.');
 end.
