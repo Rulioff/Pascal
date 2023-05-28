@@ -1,18 +1,14 @@
-﻿﻿{Z_1.2 Одинаковые цифры.}
-var number, dig, count : integer;
-  bool : boolean;
+﻿//Z_1_2 Одинаковые цифры.
+{Вводится число, программа должна напечатать TRUE (или FALSE в противном случае),
+если это число двузначное и обе его цифры одинаковы.}
+var number: integer;
+  twoEven : boolean;
   
 begin  
     writeln('Введите двузначное число с одинаковым значением разряда: ');
-    readln(number);
-    dig := 0;
-    count := number;
-    while number > 0 do begin
-      number := number div 10;
-      inc(dig);
-    end;
+    read(number);
     
-    if (trunc(count/10) = count mod 10) and (dig = 2)
-      then bool := true;
-    writeln(dig, ' ', (bool));
+    if (number > 9) and (number < 100) and ((number div 10) = number mod 10)
+      then twoEven := true;
+    writeln(' ', twoEven);
 end.
