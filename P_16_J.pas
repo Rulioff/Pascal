@@ -7,23 +7,35 @@ var
   vertical, horizontal : byte;
 begin
   repeat
-  
-  write('Введите № вертикали на доске пожалуйста: ');
-  readln(vertical);
+  vertical := 1;
   
   write('Введите № горизонтали на доске пожалуйста: ');
   readln(horizontal);
-
-  if (vertical = 0) or (horizontal = 0)
+  
+  if horizontal = 0
     then break;
     
-  case (vertical mod 2) and (horizontal mod 2) of
-    1 : writeln('Чёрная клетка.');
-    0 : writeln('Белая клетка.');
-  end;
-      
-  until ((vertical < 8) or (vertical > 0)) or ((horizontal < 8) or (horizontal > 0));
+  if (horizontal > 0) and (horizontal < 9) then begin
+    write('Введите № вертикали на доске пожалуйста: ');
+    readln(vertical);
+    
+    if vertical = 0
+      then break;
+    
+    if (vertical > 0) and (vertical < 9) then begin
+      if ((vertical + horizontal) mod 2) = 0
+        then writeln('Чёрная клетка.')
+        else writeln('Белая клетка.')
   
-  if ((vertical > 8) or (vertical < 0)) or ((horizontal > 8) or (horizontal < 0))
-    then writeln('Ошибка')
+  end else begin
+      writeln('Ошибка по вертикали.');
+    end
+  
+  end else begin
+    writeln('Ошибка по горизонтали.');
+  end
+  
+  until (vertical = 0) or (horizontal = 0);
+  
+  writeln('Играйте в шахматы!0');
 end.
