@@ -1,4 +1,4 @@
-﻿{P_17_A – Отказ от сдачи экзамена.}
+﻿{P_17_A Отказ от сдачи экзамена.}
 {Позвольте ученику отказаться от сдачи экзамена. Признаком отказа будет
 ввод нуля в качестве ответа. В этом случае надо досрочно выйти из цикла и обойти
 выставляющий оценку оператор.}
@@ -9,16 +9,18 @@ var
 begin
   randomize;
   error := 0; { обнуляем счетчики ошибок }
-  
+  count := 1;
+  writeln('Для отмены экзамена нажмите 0 пожалуйста.');
   repeat
-    if count = 0
-      then break;
+
     number := 1 + random(10);
     numberTwo := 1 + random(10);
     write(count, ' Сколько будет ', number,' * ', numberTwo, ' ? ');
     readln(amount);
-  until count > 15; //15 вопросов.
-    
+    if amount = 0
+      then break;
+    inc(count);  
+  
     { Если ответ неверный, увеличиваем счетчик ошибок }
     if number * numberTwo <> amount
       then inc(error);
@@ -27,10 +29,10 @@ begin
       0 : score := 'Отлично!';
       1,2 : score := 'Хорошо';
       3..5 : score := 'Удовлетворительно';
-    else score := 'Ну оччччень плохо!';
+    else score := 'Ну оччччень плохо!';    
+    end;
     
-  end;
-  
+  until count > 15; //15 вопросов. 
 writeln(score, ' Нажмите Enter');
 readln;
 end.
