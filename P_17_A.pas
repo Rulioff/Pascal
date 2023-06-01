@@ -22,14 +22,14 @@ begin
     inc(count);  
   
     { Если ответ неверный, увеличиваем счетчик ошибок }
-    if number * numberTwo <> amount
+    if (number * numberTwo <> amount) and (amount <> 0)
       then inc(error);
     
     case error of { выставляем оценку }
       0 : score := 'Отлично!';
       1,2 : score := 'Хорошо';
       3..5 : score := 'Удовлетворительно';
-    else score := 'Ну оччччень плохо!';    
+    else score := 'Неуд!';    
     end;
     
   until count > 15; //15 вопросов. 
