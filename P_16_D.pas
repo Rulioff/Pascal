@@ -1,36 +1,42 @@
 ﻿{P_16_D Танк.}
+{Танк в компьютерной игре может двигаться в одном из четырех
+направлений, обозначим их числами: 1 — север, 2 — восток, 3 — юг, 4 — запад.
+Направление движения изменяется тремя командами: 1 — поворот направо, 2 —
+поворот налево, 3 — поворот кругом. Пользователь вводит начальное направление
+движения, а затем ряд команд. Программа должна определять и печатать всякий
+раз новое направление. Выход из цикла — команда 0.}
 var
-  Direct, Command: integer;
+  direct, command: integer;
 
 begin
   write('Направление(1-4)= ');
   readln(Direct);
   repeat
     write('Команда (1-3)= ');
-    readln(Command);
-    case Command of
+    readln(command);
+    case command of
       1:
-        case Direct of { направо }
-          1: Direct := 2;
-          2: Direct := 3;
-          3: Direct := 4;
-          4: Direct := 1;
+        case direct of // направо.
+          1: direct := 2;
+          2: direct := 3;
+          3: direct := 4;
+          4: direct := 1;
         end;
       2:
-        case Direct of { налево }
-          1: Direct := 4;
-          2: Direct := 1;
-          3: Direct := 2;
+        case direct of // налево.
+          1: direct := 4;
+          2: direct := 1;
+          3: direct := 2;
           4: Direct := 3;
         end;
       3:
-        case Direct of { кругом }
-          1: Direct := 3;
-          2: Direct := 4;
-          3: Direct := 1;
-          4: Direct := 2;
+        case direct of // кругом.
+          1: direct := 3;
+          2: direct := 4;
+          3: direct := 1;
+          4: direct := 2;
         end;
     end;
-    Writeln('Направление= ', Direct);
-  until Command = 0;
+    writeln('Направление= ', direct);
+  until command = 0;
 end.
