@@ -17,7 +17,6 @@ begin
     case age mod 10 of
       1 : ending := ' год.';
       2, 3, 4 : ending := ' года.';
- //     11 : ending := ' лет.';
     end;
   end;  
   
