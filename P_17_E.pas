@@ -6,11 +6,11 @@ var
   begin
     write('Введите количество чисел для суммы пожалуйста: ');
     readln(number);
-//    sum := 1;
+    sum := 0;
 //    i := 1;
     
     for i := 1 to number do
-      sum := i + number;
+      sum := i + sum;
     
     writeln(number);
     writeln('Сумма ', number, ' чисел = ', sum);
