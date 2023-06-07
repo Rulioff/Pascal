@@ -10,18 +10,18 @@ var
 
 begin
   write('Введите Ваш возраст пожалуйста: ');
-  read(age); // Ошибка типа данных, если вводим не число.
+  read(age);
   ending := ' лет.';
   
-  if (age mod 100) div 10 = 1 then
+  if (age mod 100) div 10 = 1 then // Проверка исключений 11, 12..19 лет. 
     case age mod 10 of
       1, 2, 3, 4 : ending := ' лет.';
     end
   else
-      case age mod 10 of
+      case age mod 10 of // Окончания для числа единиц 1-4.
         1 : ending := ' год.';
         2, 3, 4 : ending := ' года.';
       end;
     
-  writeln('Вам ', age, ending);
+  writeln('Ваш возраст ', age, ending);
 end.
