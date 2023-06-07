@@ -6,19 +6,21 @@
 выпадают из общего правила, их надо проверить особо (например, 11, 12, 13, 14).}
 var
   age: integer;
+  tensNumber : boolean;
   ending: string;
 
 begin
   write('Введите Ваш возраст пожалуйста: ');
   read(age);
   ending := ' лет.';
+  tensNumber := (age mod 100) div 10 = 1; // Проверка исключений 11, 12..19 лет. 
   
-  if (age mod 100) div 10 = 1 then // Проверка исключений 11, 12..19 лет. 
+  if tensNumber then
     case age mod 10 of
       1, 2, 3, 4 : ending := ' лет.';
     end
   else
-      case age mod 10 of // Окончания для числа единиц 1-4.
+      case age mod 10 of
         1 : ending := ' год.';
         2, 3, 4 : ending := ' года.';
       end;
