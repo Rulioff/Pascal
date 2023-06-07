@@ -18,10 +18,10 @@ begin
   if tensNumber = 1 then
     case onesNumber of
       1, 2, 3, 4 : ending := ' лет.';
-    end;
-  if onesNumber = 1 then
-    ending := ' год.';
-  if (onesNumber >= 2) and (onesNumber <= 4) then
+    end
+  else if onesNumber = 1 then
+    ending := ' год.'
+  else if (onesNumber >= 2) and (onesNumber <= 4) then
     ending := ' года.';
     
   writeln('Ваш возраст ', age, ending);
