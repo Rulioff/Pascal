@@ -5,23 +5,24 @@
 определить последнюю цифру года операцией MOD 10. Некоторые числа
 выпадают из общего правила, их надо проверить особо (например, 11, 12, 13, 14).}
 var
-  age: integer;
+  age, onesNumber, tensNumber : integer;
   ending: string;
 
 begin
   write('Введите Ваш возраст пожалуйста: ');
-  read(age); // Ошибка типа данных, если вводим не число.
+  read(age);
   ending := ' лет.';
+  tensNumber := (age mod 100) div 10; // Проверка исключений 11, 12..19 лет.
+  onesNumber := age mod 10;
   
-  if (age mod 100) div 10 = 1 then
-    case age mod 10 of
+  if tensNumber = 1 then
+    case onesNumber of
       1, 2, 3, 4 : ending := ' лет.';
-    end
-  else
-      case age mod 10 of
-        1 : ending := ' год.';
-        2, 3, 4 : ending := ' года.';
-      end;
+    end;
+  if onesNumber = 1 then
+    ending := ' год.';
+  if (onesNumber >= 2) and (onesNumber <= 4) then
+    ending := ' года.';
     
-  writeln('Вам ', age, ending);
+  writeln('Ваш возраст ', age, ending);
 end.
