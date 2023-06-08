@@ -15,12 +15,12 @@ begin
   tensNumber := (age mod 100) div 10; // Проверка исключений 11, 12..19 лет.
   onesNumber := age mod 10;
   
-  if tensNumber = 1 then
-    case onesNumber of
-      1, 2, 3, 4 : ending := ' лет.';
-    end
+  if (tensNumber = 1) and (onesNumber >= 1) and (onesNumber <= 4) then
+    ending := ' лет.'
+
   else if onesNumber = 1 then
     ending := ' год.'
+  
   else if (onesNumber >= 2) and (onesNumber <= 4) then
     ending := ' года.';
     
