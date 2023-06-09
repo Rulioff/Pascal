@@ -14,15 +14,15 @@ begin
   ending := ' лет.';
   tensNumber := (age mod 100) div 10; // Проверка исключений 11, 12..19 лет.
   onesNumber := age mod 10;
+
+  if onesNumber = 1 then
+    ending := ' год.';
+  
+  if (onesNumber >= 2) and (onesNumber <= 4) then
+    ending := ' года.';
   
   if (tensNumber = 1) and (onesNumber >= 1) and (onesNumber <= 4) then
-    ending := ' лет.'
-
-  else if onesNumber = 1 then
-    ending := ' год.'
-  
-  else if (onesNumber >= 2) and (onesNumber <= 4) then
-    ending := ' года.';
+    ending := ' лет.';
     
   writeln('Ваш возраст ', age, ending);
 end.
