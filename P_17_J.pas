@@ -2,7 +2,7 @@
 {Напишите программу, вычисляющую сумму только тех чисел от 1 до N,
 которые делятся либо на три, либо на пять.}
 var
-  number, i, split3, split5, sum : integer;
+  number, i, split, split3, split5, sum : integer;
 
   begin
     write('Введите количество чисел для суммы пожалуйста: ');
@@ -13,9 +13,10 @@ var
     
     for i := 1 to number do
       if (split3 = 0) or (split5 = 0)
-        then
-          sum := i + sum;
+        then begin
+          split := i;
+          sum := split + sum;
+        end;
     
-    writeln(number);
     writeln('Сумма ', number, ' чисел = ', sum);
   end.
