@@ -18,5 +18,5 @@ var
           sum := split + sum;
         end;
     
-    writeln('Сумма ', number, ' чисел = ', sum);
+    writeln('Сумма ', number, ' чисел, которые делятся на 3 или на 5 = ', sum);
   end.
