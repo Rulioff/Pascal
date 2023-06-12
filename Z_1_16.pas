@@ -1,7 +1,7 @@
 ﻿{Z_1_16 Обмен значений_2.}
-{Обменять значения числовых переменных A и B, воспользовавшись третьей переменной.}
+{Обменять значения числовых переменных A и B, не применяя третьей переменной.}
 var
-  numberA, numberB, : integer;
+  numberA, numberB : integer;
   
   begin
     write('Введите А, пожалуйста: ');
@@ -9,9 +9,10 @@ var
     
     write('Введите B, пожалуйста: ');
     readln(numberB);
-
-    numberA := numberB;
-    numberB := buffer;
+    
+    numberA := numberA + numberB;
+    numberB := numberA - numberB;
+    numberA := numberA - numberB;
     
     writeln('Обмен значений A = ', numberA, ' и B = ', numberB, '.');
   end.
