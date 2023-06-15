@@ -5,22 +5,36 @@
 — старшинство. Надо напечатать словами либо название карты, например, «семёрка
 бубен», либо «ошибка», если число не соответствует никакой карте.}
 var
-  card, suit, rank : integer;
+  card, suit, rank: integer;
 
 begin
   write('Введите номер карты, пожалуйста: ');
   readln(card);
-  suit := card mod(10);
-  rank := card div 10;
+  suit := card div (10);
+  rank := card mod 10;
   
-  if (suit >= 1) and (quarter < 5) then
-    case quarter of
-      1 : writeln('пики');
-      2 : writeln('4 - 6');
-      3 : writeln('7 - 9');
-      4 : writeln('10 - 12');
+  if (rank >= 1) and (rank <= 9) then
+    case rank of
+      1: write('шестёрка ');
+      2: write('семёрка ');
+      3: write('восьмёрка ');
+      4: write('девятка ');
+      5: write('десятка ');
+      6: write('валет ');
+      7: write('дама ');
+      8: write('король ');
+      9: write('туз ');
     end
-  
   else
-      writeln('Ошибка.');
+    write('Ошибка.');
+  
+  if (suit >= 1) and (suit < 5) then
+    case suit of
+      1: write('пик ');
+      2: write('треф ');
+      3: write('бубей ');
+      4: write('червей ');
+    end    
+  else
+    write('Ошибка.');
 end.
