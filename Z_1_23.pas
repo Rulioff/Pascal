@@ -15,6 +15,6 @@ var
     write('Введите 3-ю сторону треугольника, пожалуйста: ');
     readln(side3);
 
-   triangular := (side1 < side2 + side3) and (side2 < side1 + side3) and (side2 < side1 + side2) ? ('Да.') : ('Нет.');
+   triangular := (side1 < side2 + side3) and (side2 < side1 + side3) and (side2 < side1 + side3) ? ('Да.') : ('Нет.');
    writeln(triangular);
   end.
