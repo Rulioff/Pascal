@@ -12,7 +12,7 @@ begin
   readln(card);
   suit := card div (10);
   rank := card mod 10;
-  
+  repeat
   if (rank >= 1) and (rank <= 9) then
     case rank of
       1: write('шестёрка ');
@@ -37,4 +37,5 @@ begin
     end    
   else
     write('Ошибка.');
+  until(true);
 end.
