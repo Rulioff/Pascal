@@ -6,6 +6,7 @@
 общий выигрыш участника.}
 var
   winN, stageM, win: integer;
+
 begin
   write('Введите число N - выигрыш на первом этапе, пожалуйста: ');
   readln(winN);
@@ -14,9 +15,10 @@ begin
   readln(stageM);
   
   win := 0;
-for var i := 1 to stageM do begin
-  win := win + winN;
-  winN := 2 * winN;
-end;
+  for var i := 1 to stageM do
+  begin
+    win := win + winN;
+    winN := 2 * winN;
+  end;
   writeln('Общий выигрыш участника = ', win);
 end.
