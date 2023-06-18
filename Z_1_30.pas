@@ -6,14 +6,20 @@
 бубен», либо «ошибка», если число не соответствует никакой карте.}
 var
   card, suit, rank: integer;
+  hasError: boolean;
 
 begin
   write('Введите номер карты, пожалуйста: ');
   readln(card);
-  suit := card div (10);
+  suit := card div 10;
   rank := card mod 10;
-  repeat
-  if (rank >= 1) and (rank <= 9) then
+  
+  hasError := false;
+  
+  if (rank < 1) or (rank > 9) or (suit < 1) or (suit > 4) then hasError := true;
+  
+  if hasError then write('Ошибка.')
+  else begin
     case rank of
       1: write('шестёрка ');
       2: write('семёрка ');
@@ -24,18 +30,13 @@ begin
       7: write('дама ');
       8: write('король ');
       9: write('туз ');
-    end
-  else
-    write('Ошибка.');
-  
-  if (suit >= 1) and (suit < 5) then
+    end;
+    
     case suit of
       1: write('пик ');
       2: write('треф ');
       3: write('бубей ');
       4: write('червей ');
-    end    
-  else
-    write('Ошибка.');
-  until(true);
+    end;
+  end;
 end.
