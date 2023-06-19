@@ -24,5 +24,5 @@ begin
     win := win + buffer;
     buffer := win * winN;
   end;
-  writeln('Общий выигрыш участника = ', win);
+  writeln('Общий выигрыш участника = ', win, ' рублей.');
 end.
