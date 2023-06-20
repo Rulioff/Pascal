@@ -19,9 +19,10 @@ begin
     if (numberN = 1) or (numberN = 2) then
       numberF := 1
     else
-  begin    
-    numberF := number + buffer;
-    buffer := numberF;
-  end;
+    begin
+      numberF := number + buffer;
+      number := buffer;
+      buffer := numberF;
+    end;
   writeln('Число Фибоначчи = ', numberF);
 end.
