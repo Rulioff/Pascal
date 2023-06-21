@@ -3,23 +3,29 @@
 противном случае. Простым называется число, делящееся без остатка лишь на 1 и само на
 себя.}
 var
-  number, numberN, buffer: integer;
+  number, numberN: integer;
   numberPrime: boolean;
 
 begin
-  write('Введите целое положительное число, пожалуйста: ');
-  readln(number);
-  (numberN <> number) and (numberN <> 1);
-  numberPrime := (number div numberN <> 0);
+  repeat
+    write('Введите целое положительное число, пожалуйста: ');
+    readln(number);
+  until number > 0;
+  
+  numberN := 2;
+
+  //numberPrime := number mod (numberN) <> 0;
    
    repeat
-    if number div number then begin
-      numberPrime := false;
-      break;
-    end;
+    if (numberN <> number) and (numberN <> 1) and (number mod numberN = 0) then begin           
+        numberPrime := false;
+        break;        
+    end
+     else
+        numberN := numberN + 1;
   until number > numberN;
   
-  //Точка отладки. writeln(numberE, ' ', numberF, ' ', hasFibonacci);
+  writeln(number, ' ', numberN, ' ', numberPrime);
   
   if numberPrime then
     writeln('Число ', number, ' проcтое? ', 'Да.')
