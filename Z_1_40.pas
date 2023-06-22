@@ -13,7 +13,6 @@ begin
   until number > 0;
   
   numberN := 2;
-  //numberPrime := true;
   
   repeat
     if (number mod numberN <> 0) then begin
