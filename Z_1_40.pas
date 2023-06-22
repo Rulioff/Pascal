@@ -3,8 +3,7 @@
 противном случае. Простым называется число, делящееся без остатка лишь на 1 и само на
 себя.}
 var
-  number, numberN: integer;
-  numberPrime: boolean;
+  number, numberN, count: integer;
 
 begin
   repeat
@@ -12,21 +11,23 @@ begin
     readln(number);
   until number > 0;
   
-  numberN := 2;
+  numberN := 1;
+  count := 0;
   
-  repeat
-    if (number mod numberN <> 0) then begin
-      numberPrime := true;
-      break;        
-    end
-    else
-      numberN := numberN + 1;
+  repeat    
     
+    if number mod numberN = 0 then begin
+      count := count + 1;
+      numberN := numberN + 1;       
+    end;
+    
+    if count > 2 then break;
+    writeln(number, ' ', numberN, ' ', count);
   until number > numberN;
   
-  writeln(number, ' ', numberN, ' ', numberPrime);
+
   
-  if numberPrime = true then
+  if count < 2 then
     writeln('Число ', number, ' проcтое? ', 'Да.')
   else
     writeln('Число ', number, ' проcтое? ', 'Нет.')
