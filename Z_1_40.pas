@@ -13,21 +13,21 @@ begin
   until number > 0;
   
   numberN := 2;
-
-  //numberPrime := number mod (numberN) <> 0;
-   
-   repeat
-    if (numberN <> number) and (numberN <> 1) and (number mod numberN = 0) then begin           
-        numberPrime := false;
-        break;        
+  //numberPrime := true;
+  
+  repeat
+    if (number mod numberN <> 0) then begin
+      numberPrime := true;
+      break;        
     end
-     else
-        numberN := numberN + 1;
+    else
+      numberN := numberN + 1;
+    
   until number > numberN;
   
   writeln(number, ' ', numberN, ' ', numberPrime);
   
-  if numberPrime then
+  if numberPrime = true then
     writeln('Число ', number, ' проcтое? ', 'Да.')
   else
     writeln('Число ', number, ' проcтое? ', 'Нет.')
