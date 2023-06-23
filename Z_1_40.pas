@@ -11,24 +11,23 @@ begin
     readln(number);
   until number > 0;
   
-  numberN := 1;
+  numberN := 0;
   count := 0;
   
-  repeat    
-    
-    if number mod numberN = 0 then begin
-      count := count + 1;
-      numberN := numberN + 1;       
-    end;
-    
+  repeat
+    begin        
+    numberN += 1;
+    if number mod numberN = 0 then
+      count += 1;
+ 
     if count > 2 then break;
+    
     writeln(number, ' ', numberN, ' ', count);
-  until number > numberN;
+    end;
+  until number <= numberN;
   
-
-  
-  if count < 2 then
-    writeln('Число ', number, ' проcтое? ', 'Да.')
-  else
-    writeln('Число ', number, ' проcтое? ', 'Нет.')
+  if count <= 2 then
+    writeln('Число ', number, ' проcтое? ', 'Да.');
+  if count > 2 then
+    writeln('Число ', number, ' проcтое? ', 'Нет.');
 end.
