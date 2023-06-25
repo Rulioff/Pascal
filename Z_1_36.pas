@@ -5,23 +5,20 @@
 этапе и M — количество преодолённых этапов (от 1 до 10). Программа должна напечатать
 общий выигрыш участника.}
 var
-  winFactor, stage, win, stageWin: integer;
+  winN, stageM, win: integer;
 
 begin
-  repeat
-    write('Введите выигрышный коэфициент N - от 2 до 5, пожалуйста: ');
-    readln(winFactor);
-
-    write('Введите число M — количество пройденнных этапов от 1 до 7, пожалуйста: ');
-    readln(stage);
-  until ((winFactor >= 2) and (winFactor <= 5) and (stage >= 1) and (stage <= 7));
-
+  write('Введите число N - выигрыш на первом этапе, пожалуйста: ');
+  readln(winN);
+  
+  write('Введите число M — количество пройденнных этапов, пожалуйста: ');
+  readln(stageM);
+  
   win := 0;
-  stageWin := 1;
-  for var i := 1 to stage do
+  for var i := 1 to stageM do
   begin
-    win := win + stageWin;
-    stageWin := stageWin * winFactor;
+    win := win + winN;
+    winN := 2 * winN;
   end;
-  writeln('Общий выигрыш участника = ', win, ' руб.');
+  writeln('Общий выигрыш участника = ', win);
 end.
