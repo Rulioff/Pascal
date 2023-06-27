@@ -11,25 +11,32 @@ begin
   
   fibonacciPrevious := 1;
   increment := 0;
-  hasFibonacci := inputNumber = fibonacciNumber;
-  fibonacciNumber := 0;
+  hasFibonacci := false;
+  fibonacciNumber := 1;
   
-  repeat
-    begin
+{  while inputNumber <= fibonacciNumber do
+  begin
+      if (inputNumber =1) or (inputNumber = fibonacciNumber) then begin
+      hasFibonacci := true;
+      break;
+      end;
       fibonacciNumber := fibonacciPrevious + increment;
       fibonacciPrevious := increment;
       increment := fibonacciNumber;
-    end;
-    
-    if fibonacciNumber = inputNumber then begin
+  end;}
+  repeat
+    if (inputNumber = 1) or (inputNumber = fibonacciNumber) then
       hasFibonacci := true;
       break;
-    end;
-  until inputNumber < fibonacciNumber;
+      fibonacciNumber := fibonacciPrevious + increment;
+      fibonacciPrevious := increment;
+      increment := fibonacciNumber;     
+
+  until inputNumber > fibonacciNumber;
   
-  //Точка отладки. writeln(inputNumber, ' ', fibonacciNumber, ' ', hasFibonacci);
+  writeln(inputNumber, ' ', fibonacciNumber, ' ', hasFibonacci);
   
-  if hasFibonacci = true then
+  if hasFibonacci then
     writeln('Число ', inputNumber, ' принадлежит ряду Фибоначчи? ', 'Да.')
   else
     writeln('Число ', inputNumber, ' принадлежит ряду Фибоначчи? ', 'Нет.')
