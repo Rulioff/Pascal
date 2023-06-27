@@ -6,23 +6,23 @@
 должна напечатать общий выигрыш участника. (Возможно ошибка в примере, Контрольные примеры:
 Входные данные: 4, 3. Результат : 21).}
 var
-  winFactor, stage, win, stageWin: integer;
+  winFactor, stage, win, winStage: integer;
 
 begin
   repeat
     write('Введите выигрышный коэфициент N - от 2 до 5, пожалуйста: ');
     readln(winFactor);
-
+    
     write('Введите число M — количество пройденнных этапов от 1 до 7, пожалуйста: ');
     readln(stage);
   until ((winFactor >= 2) and (winFactor <= 5) and (stage >= 1) and (stage <= 7));
-
+  
   win := 0;
-  stageWin := 1;
+  winStage := 1;
   for var i := 1 to stage do
   begin
-    win := win + stageWin;
-    stageWin := stageWin * winFactor;
+    win := win + winStage;
+    winStage := winStage * winFactor;
   end;
   writeln('Общий выигрыш участника = ', win, ' руб.');
 end.
