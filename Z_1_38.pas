@@ -5,24 +5,24 @@
 Программа должна запросить порядковый номер числа в этом ряду (N) и вывести N-е
 число Фибоначчи (N = 1 ... 20).}
 var
-  numberF, numberN, number, buffer: integer;
+  fibonacciNumber, indexNumber, fibonacciPrevious, increment: integer;
 
 begin
   repeat
-    write('Введите порядковый номер числа N - от 1 до ∞, пожалуйста: ');
-    readln(numberN);
-  until numberN > 0;
+    write('Введите порядковый номер числа N - от 1 до 57, пожалуйста: ');
+    readln(indexNumber);
+  until indexNumber > 0;
   
-  number := 1;
-  buffer := 0;
-  for var i := 1 to numberN do
-    if (numberN = 1) or (numberN = 2) then
-      numberF := 1
+  fibonacciPrevious := 1;
+  increment := 0;
+  for var i := 1 to indexNumber do
+    if (indexNumber = 1) or (indexNumber = 2) then
+      fibonacciNumber := 1
     else
     begin
-      numberF := number + buffer;
-      number := buffer;
-      buffer := numberF;
+      fibonacciNumber := fibonacciPrevious + increment;
+      fibonacciPrevious := increment;
+      increment := fibonacciNumber;
     end;
-  writeln('Число Фибоначчи = ', numberF);
+  writeln('Число Фибоначчи = ', fibonacciNumber, '.');
 end.
