@@ -1,11 +1,11 @@
-﻿{Z_1_41 Печать простых чисел. Доработать нейминг и ввести булеву перемнную primeNumber.}
+﻿{Z_1_41 Печать простых чисел. Исправить работу цикла.}
 {Ввести два целых положительных числа A и B и напечатать все простые числа, лежащие
 на этом интервале (включая крайние). Сделать два варианта программы:
 1) Когда известно, что A < B
 2) Когда соотношение между A и B неизвестно.}
 var
-  firstNumber, lastNumber, number, indexNumber, countPrime, numberPrime, buffer: integer;
-  primeNumber: boolean;
+  firstNumber, lastNumber, currentNumber, indexNumber, primeCount, primeNumber, shift: integer;
+  umpty: boolean;
 
 begin
   repeat
@@ -17,35 +17,37 @@ begin
   until (firstNumber > 0) and (lastNumber > 0);  
 
       if firstNumber > lastNumber then begin
-        buffer := firstNumber;
+        shift := firstNumber;
         firstNumber := lastNumber;
-        lastNumber := buffer;
+        lastNumber := shift;
       end;
   
-  for number := firstNumber to lastNumber do
+  for currentNumber := firstNumber to lastNumber do
   begin
     indexNumber := 0;
-    countPrime := 0;
-    numberPrime := 1;
-    primeNumber := false;
+    primeCount := 0;
+    primeNumber := 0;
+    umpty := true;
     
     repeat
       begin
         indexNumber += 1;
-        if number mod indexNumber = 0 then
-          countPrime += 1;
+        if currentNumber mod indexNumber = 0 then
+          primeCount += 1;
         
-        if countPrime > 2 then break;
+        if primeCount > 2 then break;
         
-            writeln(number, ' ', indexNumber, ' ', countPrime);
+    //        writeln(currentNumber, ' ', indexNumber, ' ', primeCount);
       end;
-    until number <= indexNumber;
+    until currentNumber <= indexNumber;
     
-    if countPrime <= 2 then begin
-      primeNumber := true;    
-      write('Число ', numberPrime, ' проcтое. ');
+    if primeCount <= 2 then begin
+      umpty := false;
+      write('Число ', primeNumber, ' проcтое. ');
+      
     end;
   end;
-  if primeNumber = false then
-    writeln(' Пусто.');
+  
+  if umpty then
+  writeln(' Пусто.');
 end.
