@@ -2,7 +2,7 @@
 {Дано число, программа должна напечатать «ДА», если оно принадлежит ряду Фибоначчи,
 и «НЕТ» в противном случае.}
 var
-  fibonacciPrevious, inputNumber, fibonacciNumber, increment: integer;
+  fibonacciPrevious, inputNumber, indexNumber, fibonacciNumber, increment: integer;
   hasFibonacci: boolean;
 
 begin
@@ -14,27 +14,19 @@ begin
   hasFibonacci := false;
   fibonacciNumber := 1;
   
-{  while inputNumber <= fibonacciNumber do
-  begin
-      if (inputNumber =1) or (inputNumber = fibonacciNumber) then begin
-      hasFibonacci := true;
-      break;
-      end;
+  for var i := 1 to 57 do
+    if (indexNumber = 1) or (indexNumber = 2) then
+      fibonacciNumber := 1
+    else
+    begin
       fibonacciNumber := fibonacciPrevious + increment;
       fibonacciPrevious := increment;
       increment := fibonacciNumber;
-  end;}
-  repeat
-    if (inputNumber = 1) or (inputNumber = fibonacciNumber) then
-      hasFibonacci := true;
-      break;
-      fibonacciNumber := fibonacciPrevious + increment;
-      fibonacciPrevious := increment;
-      increment := fibonacciNumber;     
-
-  until inputNumber > fibonacciNumber;
-  
-  writeln(inputNumber, ' ', fibonacciNumber, ' ', hasFibonacci);
+      if inputNumber = fibonacciNumber then begin
+        hasFibonacci := true;
+        break;
+      end;
+    end;
   
   if hasFibonacci then
     writeln('Число ', inputNumber, ' принадлежит ряду Фибоначчи? ', 'Да.')
