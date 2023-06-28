@@ -4,55 +4,48 @@
 1) Когда известно, что A < B
 2) Когда соотношение между A и B неизвестно.}
 var
-  numberA, numberB, number, numberN, count, numberPrime, buffer: integer;
-  ask: string;
+  firstNumber, lastNumber, number, indexNumber, countPrime, numberPrime, buffer: integer;
+  primeNumber: boolean;
 
 begin
   repeat
     write('Введите целое положительное число A, пожалуйста: ');
-    readln(numberA);
+    readln(firstNumber);
     
     write('Введите целое положительное число B, пожалуйста: ');
-    readln(numberB);
-  until (numberA > 0) and (numberB > 0);
-  
-  repeat
-    write('Известно, что A < B? Введите да или нет, пожалуйста: ');
-    readln(ask);
-    
-    if ask = 'да' then break;
-    
-    if ask = 'нет' then
-      if numberA > numberB then begin
-        buffer := numberA;
-        numberA := numberB;
-        numberB := buffer;
+    readln(lastNumber);
+  until (firstNumber > 0) and (lastNumber > 0);  
+
+      if firstNumber > lastNumber then begin
+        buffer := firstNumber;
+        firstNumber := lastNumber;
+        lastNumber := buffer;
       end;
-  until (ask = 'да') or (ask = 'нет');
   
-  for number := numberA to numberB do
+  for number := firstNumber to lastNumber do
   begin
-    numberN := 0;
-    count := 0;
-    numberPrime := 0;
+    indexNumber := 0;
+    countPrime := 0;
+    numberPrime := 1;
+    primeNumber := false;
     
     repeat
       begin
-        numberN += 1;
-        if number mod numberN = 0 then
-          count += 1;
+        indexNumber += 1;
+        if number mod indexNumber = 0 then
+          countPrime += 1;
         
-        if count > 2 then break;
+        if countPrime > 2 then break;
         
-        //    writeln(number, ' ', numberN, ' ', count);
+            writeln(number, ' ', indexNumber, ' ', countPrime);
       end;
-    until number <= numberN;
+    until number <= indexNumber;
     
-    if count <= 2 then begin
-      numberPrime := number;    
+    if countPrime <= 2 then begin
+      primeNumber := true;    
       write('Число ', numberPrime, ' проcтое. ');
     end;
   end;
-  if numberPrime = 0 then
+  if primeNumber = false then
     writeln(' Пусто.');
 end.
