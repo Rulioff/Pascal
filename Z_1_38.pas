@@ -9,9 +9,9 @@ var
 
 begin
   repeat
-    write('Введите порядковый номер числа N - от 1 до 57, пожалуйста: ');
+    write('Введите порядковый номер числа N - от 1 до 20, пожалуйста: ');
     readln(indexNumber);
-  until indexNumber > 0;
+  until (indexNumber > 0) and (indexNumber < 21);
   
   fibonacciPrevious := 1;
   increment := 0;
