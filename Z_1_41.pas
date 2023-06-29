@@ -4,8 +4,8 @@
 1) Когда известно, что A < B
 2) Когда соотношение между A и B неизвестно.}
 var
-  firstNumber, lastNumber, primeNumber, indexNumber, primeCount, shift: integer;
-  empty: boolean;
+  firstNumber, lastNumber, currentNumber, divisor, shift: integer;
+  empty, primeNumber: boolean;
 
 begin
   repeat
@@ -24,25 +24,24 @@ begin
   end;
   empty := true;
   
-  for primeNumber := firstNumber to lastNumber do
+  for currentNumber := firstNumber to lastNumber do
   begin
-    indexNumber := 0;
-    count := 0;
+    divisor := 0;
+    primeNumber := true;
     
     repeat
       begin
-        indexNumber += 1;
-        if primeNumber mod indexNumber = 0 then
-          primeCount += 1;
+        divisor += 1;
+        if (currentNumber mod divisor = 0) and (divisor <> 1) and (currentNumber <> divisor) then
+          primeNumber := false;
         
-        if primeCount > 2 then break;
-        
+        if primeNumber = false then break;        
       end;
-    until primeNumber <= indexNumber;
+    until currentNumber <= divisor;
     
-    if primeCount <= 2 then begin
+    if primeNumber then begin
       empty := false;  
-      write('Число ', primeNumber, ' проcтое. ');
+      write('Число ', currentNumber, ' проcтое. ');
     end;
   end;
   
