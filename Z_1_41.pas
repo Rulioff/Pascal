@@ -1,11 +1,11 @@
-﻿{Z_1_41 Печать простых чисел. Исправить работу цикла.}
+﻿{Z_1_41 Печать простых чисел.}
 {Ввести два целых положительных числа A и B и напечатать все простые числа, лежащие
 на этом интервале (включая крайние). Сделать два варианта программы:
 1) Когда известно, что A < B
 2) Когда соотношение между A и B неизвестно.}
 var
-  firstNumber, lastNumber, currentNumber, indexNumber, primeCount, primeNumber, shift: integer;
-  umpty: boolean;
+  firstNumber, lastNumber, primeNumber, indexNumber, primeCount, shift: integer;
+  empty: boolean;
 
 begin
   repeat
@@ -14,40 +14,38 @@ begin
     
     write('Введите целое положительное число B, пожалуйста: ');
     readln(lastNumber);
-  until (firstNumber > 0) and (lastNumber > 0);  
-
-      if firstNumber > lastNumber then begin
-        shift := firstNumber;
-        firstNumber := lastNumber;
-        lastNumber := shift;
-      end;
+  until (firstNumber > 0) and (lastNumber > 0);
   
-  for currentNumber := firstNumber to lastNumber do
+  // Для 1-го варианта удалите строки 20 ... 24.
+  if firstNumber > lastNumber then begin
+    shift := firstNumber;
+    firstNumber := lastNumber;
+    lastNumber := shift;
+  end;
+  empty := true;
+  
+  for primeNumber := firstNumber to lastNumber do
   begin
     indexNumber := 0;
-    primeCount := 0;
-    primeNumber := 0;
-    umpty := true;
+    count := 0;
     
     repeat
       begin
         indexNumber += 1;
-        if currentNumber mod indexNumber = 0 then
+        if primeNumber mod indexNumber = 0 then
           primeCount += 1;
         
         if primeCount > 2 then break;
         
-    //        writeln(currentNumber, ' ', indexNumber, ' ', primeCount);
       end;
-    until currentNumber <= indexNumber;
+    until primeNumber <= indexNumber;
     
     if primeCount <= 2 then begin
-      umpty := false;
+      empty := false;  
       write('Число ', primeNumber, ' проcтое. ');
-      
     end;
   end;
   
-  if umpty then
-  writeln(' Пусто.');
+  if empty then
+    writeln('Пусто.');
 end.
