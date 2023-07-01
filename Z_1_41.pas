@@ -5,7 +5,7 @@
 2) Когда соотношение между A и B неизвестно.}
 var
   firstNumber, lastNumber, currentNumber, divisor, shift: integer;
-  empty: boolean;
+  isEmpty, isPrimeNumber: boolean;
 
 begin
   repeat
@@ -22,27 +22,27 @@ begin
     firstNumber := lastNumber;
     lastNumber := shift;
   end;
+  isEmpty := true;
   
   for currentNumber := firstNumber to lastNumber do
   begin
     divisor := 0;
-    empty := false;
+    isPrimeNumber := true;
     
     repeat
-      begin
-        divisor += 1;
-        if (currentNumber mod divisor = 0) and (divisor <> 1) and (currentNumber <> divisor) then
-        begin
-          empty := true;
-          break;
-        end;       
+      divisor += 1;
+      if (currentNumber mod divisor = 0) and (divisor <> 1) and (currentNumber <> divisor) then begin
+        isPrimeNumber := false;
+        break;        
       end;
     until currentNumber <= divisor;
     
-    if empty = false then
+    if isPrimeNumber then begin
+      isEmpty := false;  
       write('Число ', currentNumber, ' проcтое. ');
+    end;
   end;
   
-  if empty then
+  if isEmpty then
     writeln('Пусто.');
 end.
