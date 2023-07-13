@@ -3,18 +3,20 @@ program P_18_1;
 
 {$CODEPAGE CP866}
 var
-  line: string;
-  symbol: char;
-  index, symbolsCount: integer;
+  Line: string;
+  Symbol: char;
+  Index, SymbolsCount: integer;
 begin
   repeat
     Write('Введите строку, пожалуйста: ');
-    Readln(line);
-    symbolsCount := Length(line); { определяем длину строки }
-    for index := 1 to symbolsCount do
+    Readln(Line);
+    SymbolsCount := Length(Line); { определяем длину строки }
+    for Index := 1 to SymbolsCount do
     begin
-      symbol := line[index]; { выбираем очередной символ }
-      Writeln(symbol); { и печатаем его в отдельной строке }
+      Symbol := Line[Index]; { выбираем очередной символ }
+      Writeln(Symbol); { и печатаем его в отдельной строке }
     end;
-  until symbolsCount = 0; { symbolsCount=0, если строка пуста }
+  until SymbolsCount = 0; { SymbolsCount=0, если строка пуста }
+  Writeln('Для выхода нажмите Enter, пожалуйста.');
+  Readln();
 end.
