@@ -1,23 +1,22 @@
-{ P_18_1 ╨а╨░╤Б╨┐╨╡╤З╨░╤В╨║╨░ ╨╛╤В╨┤╨╡╨╗╤М╨╜╤Л╤Е ╤Б╨╕╨╝╨▓╨╛╨╗╨╛╨▓ ╤Б╤В╤А╨╛╨║╨╕.}
+{ P_18_1 Распечатка отдельных символов строки.}
 program P_18_1;
 
-{$mode objfpc}{$H+}
-{$codepage UTF8}
+{$CODEPAGE CP866}
 var
-  Line: unicodestring;
+  Line: string;
   Symbol: char;
   Index, SymbolsCount: integer;
 begin
   repeat
-    Write('╨Т╨▓╨╡╨┤╨╕╤В╨╡ ╤Б╤В╤А╨╛╨║╤Г, ╨┐╨╛╨╢╨░╨╗╤Г╨╣╤Б╤В╨░: ');
+    Write('Введите строку, пожалуйста: ');
     Readln(Line);
-    SymbolsCount := Length(Line); { ╨╛╨┐╤А╨╡╨┤╨╡╨╗╤П╨╡╨╝ ╨┤╨╗╨╕╨╜╤Г ╤Б╤В╤А╨╛╨║╨╕ }
+    SymbolsCount := Length(Line); { определяем длину строки }
     for Index := 1 to SymbolsCount do
     begin
-      Symbol := Line[Index]; { ╨▓╤Л╨▒╨╕╤А╨░╨╡╨╝ ╨╛╤З╨╡╤А╨╡╨┤╨╜╨╛╨╣ ╤Б╨╕╨╝╨▓╨╛╨╗ }
-      Writeln(Symbol); { ╨╕ ╨┐╨╡╤З╨░╤В╨░╨╡╨╝ ╨╡╨│╨╛ ╨▓ ╨╛╤В╨┤╨╡╨╗╤М╨╜╨╛╨╣ ╤Б╤В╤А╨╛╨║╨╡ }
+      Symbol := Line[Index]; { выбираем очередной символ }
+      Writeln(Symbol); { и печатаем его в отдельной строке }
     end;
-  until SymbolsCount = 0; { SymbolsCount=0, ╨╡╤Б╨╗╨╕ ╤Б╤В╤А╨╛╨║╨░ ╨┐╤Г╤Б╤В╨░ }
-  Writeln('╨Ф╨╗╤П ╨▓╤Л╤Е╨╛╨┤╨░ ╨╜╨░╨╢╨╝╨╕╤В╨╡ Enter, ╨┐╨╛╨╢╨░╨╗╤Г╨╣╤Б╤В╨░.');
-  Readln;
+  until SymbolsCount = 0; { SymbolsCount=0, если строка пуста }
+  Writeln('Для выхода нажмите Enter, пожалуйста.');
+  Readln();
 end.
