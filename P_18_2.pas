@@ -3,13 +3,17 @@ program P_18_2;
 
 {$mode objfpc}{$H+}
 {$codepage UTF8}
+
 var
   Line: string;
-  Index : integer;
+  Index: integer;
+
 begin
   repeat
-Write('Введите строку: '); Readln(Line);
-for Index := 1 to Length(Line) do Writeln(Line[Index]);
-until Length(Line)=0;
-end.
+    Write('Введите строку, пожалуйста: ');
+    Readln(Line);
 
+    for Index := 1 to Length(Line) do
+      Writeln(Line[Index]);
+  until Length(Line) = 0;
+end.
