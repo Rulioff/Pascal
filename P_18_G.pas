@@ -8,9 +8,8 @@ program P_18_G;
 {$codepage UTF8}
 
 var
-  Line, PhoneNumber: string;
+  Line, PhoneNumber, Symbol: string;
   Index: integer;
-  Symbol: char;
 
 begin
   Write('Введите номер телефона, пожалуйста: ');
