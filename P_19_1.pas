@@ -1,16 +1,20 @@
-﻿{P_19_1 Пример применения процедуры.}
-var
-  man: string;
+{P_19_1 Пример применения процедуры. Теоретическая задача.}
+program P_19_1;
 
-procedure pause; //--- описание процедуры ---
-begin
-  write('Нажмите Enter…');
-  readln;
-end;
+{$mode objfpc}{$H+}
+{$codepage UTF8}
+var
+  Man: string;
+
+  procedure Pause; //--- описание процедуры ---
+  begin
+    Write('Нажмите Enter…');
+    readln;
+  end;
 
 begin //--- главная программа ---
   writeln('Как тебя зовут?');
   readln(Man);
-  writeln('Здравствуй, ', man);
-  pause; //Вызов процедуры.
+  writeln('Здравствуй, ', Man);
+  Pause; //Вызов процедуры.
 end.
