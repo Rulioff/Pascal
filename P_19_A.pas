@@ -16,17 +16,17 @@ var
   begin
     if HasRus then
       Writeln('Нажмите Ввод')
-    else;
-    Writeln('Press Enter');
+    else
+      Writeln('Press Enter');
     Readln;
   end;
 
 begin{--- главная программа ---}
-  Write('Выберите язык, пожалуйста: ');
+  Write('Выберите язык, пожалуйста Ru или En: ');
   Readln(Language);
   if Language = 'Ru' then
     Pause(True);
 
-  if Language = 'Ru' then
+  if Language = 'En' then
     Pause(False);
 end.
