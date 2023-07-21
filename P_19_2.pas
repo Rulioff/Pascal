@@ -1,21 +1,24 @@
 {P_19_2 Применение процедуры с параметром.}
 program P_19_2;
-{$CODEPAGE CP866}
-var
-  man: string;
 
-  procedure Pause(msg: string);
-  //--- объявление процедуры с параметром msg ---
+{$mode objfpc}{$H+}
+{$codepage UTF8}
+var
+  Man: string;
+
+  procedure Pause(Msg: string);
+  //--- объявление процедуры с параметром Msg ---
   begin
-    Write(msg);
+    Write(Msg);
     readln;
   end;
 
 begin //--- главная программа ---
-  writeln('Как тебя зовут?');
+  writeln('Как Вас зовут?');
   readln(Man);
-  writeln('Здравствуй, ', man);
-  Pause('Нажмите Enter:'); //Вызов процедуры.
+  writeln('Здравствуйте, ', Man);
+  Pause('Нажмите Enter:');
+  //Вызов процедуры с параметром.
   Pause('Ещё раз:');
   Pause('И ещё разок!');
 end.
