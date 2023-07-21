@@ -1,26 +1,32 @@
-﻿{Напишите ещё одну версию процедуры Pause, выводящую сообщение
-либо на русском, либо на английском языке. Параметр этой процедуры должен
-быть булевым и работать она должна так. Pause(true); -печатается «Нажмите Enter…»-
--Pause(false); -печатается «Press Enter…»-}
+{Напишите ещё одну версию процедуры Pause, выводящую сообщение либо на русском,
+либо на английском языке. Параметр этой процедуры должен быть булевым и работать
+она должна так. Pause(true); -печатается «Нажмите Enter…» -Pause(false);
+-печатается «Press Enter…»-}
 program P_19_A;
 
-var
-  language: string;
+{$mode objfpc}{$H+}
+{$codepage UTF8}
 
-{--- объявление процедуры с параметром hasRus ---}
-procedure Pause(hasRus: boolean);
-begin
-  Pause(true);
-  Writeln('Нажмите Ввод');
-  Pause(false);
-  Writeln('Нажмите Ввод');
-end;
+var
+  Language: string;
+  //  HasRus: boolean;
+
+  {--- объявление процедуры с параметром HasRus ---}
+  procedure Pause(HasRus: boolean);
+  begin
+    if HasRus then
+      Writeln('Нажмите Ввод')
+    else;
+    Writeln('Press Enter');
+    Readln;
+  end;
 
 begin{--- главная программа ---}
   Write('Выберите язык, пожалуйста: ');
-  Readln(language);
-  if language = 'Ru' then
-    Pause(true);
-  if language = 'En' then
-    Pause(false);
+  Readln(Language);
+  if Language = 'Ru' then
+    Pause(True);
+
+  if Language = 'Ru' then
+    Pause(False);
 end.
