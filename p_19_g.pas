@@ -13,11 +13,7 @@ program P_19_G;
   end;
 
 begin
-{  Write('Введите первое число, пожалуйста: ');
-  Readln(NumberFirst);
-  Write('Введите второе число, пожалуйста: ');
-  Readln(NumberSecond);}
-  Arithmetic(25, 15);
-  Arithmetic(10, 20);
+  Arithmetic(22, 11);
+  Arithmetic(10, 24);
   Readln;
 end.
