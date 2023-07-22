@@ -3,22 +3,21 @@
 
 program P_19_G;
 
-  procedure Arithmetic(Sum, Difference: integer);
-
-  var
-    NumberFirst, NumberSecond: integer;
+{$mode objfpc}{$H+}
+{$codepage UTF8}
+  procedure Arithmetic(NumberFirst, NumberSecond: integer);
 
   begin
-    Sum := NumberFirst + NumberSecond;
-    Difference := NumberFirst - NumberSecond;
+    Writeln('Сумма = ', NumberFirst + NumberSecond, '. Разность = ',
+      NumberFirst - NumberSecond);
   end;
 
 begin
-  Write('Введите первое число, пожалуйста: ');
+{  Write('Введите первое число, пожалуйста: ');
   Readln(NumberFirst);
   Write('Введите второе число, пожалуйста: ');
-  Readln(NumberSecond);
-  Arithmetic(Sum);
-  Arithmetic(Difference);
+  Readln(NumberSecond);}
+  Arithmetic(25, 15);
+  Arithmetic(10, 20);
   Readln;
 end.
