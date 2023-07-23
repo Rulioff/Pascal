@@ -12,6 +12,8 @@ var
   {--- Заглушка процедуры ---}
   procedure Scan(arg: string);
   begin
+    for k := 1 to Length(arg) do
+      if arg[k] = 'A' then arg[k] := 'B';
   end;
 
 begin {--- главная программа ---}
