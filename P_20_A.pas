@@ -40,6 +40,7 @@ begin
     if Number * NumberTwo <> Amount then Inc(Error);
   end; { цикл и блок завершаются здесь}
 
-  writeln(Rating, ' Нажмите Enter');
+  Rating(Error);
+  writeln(Score, ' Нажмите Enter');
   readln;
 end.
