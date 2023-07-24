@@ -10,20 +10,21 @@ program P_20_1;
 
 var
   Line: string;
-  Count: integer; { глобальная переменная }
+  Index: integer; { глобальная переменная }
 
   procedure Scan(LineSent: string);
   var
-    CountA: integer; { локальная переменная }
+    Index: integer; { локальная переменная }
   begin
-    for CountA := 1 to Length(LineSent) do
-      if LineSent[CountA] = 'A' then LineSent[CountA] := 'B';
+    for Index := 1 to Length(LineSent) do
+      if LineSent[Index] = 'A' then
+        LineSent[Index] := 'B';
   end;
 
 begin { главная программа }
-  for Count := 1 to 3 do
+  for Index := 1 to 3 do
   begin
-    Write('Введите строку: ');
+    Write('Введите строку, пожалуйста: ');
     Readln(Line);
     Scan(Line);
     Writeln(Line);
