@@ -9,23 +9,23 @@ program P_20_1;
 {$codepage UTF8}
 
 var
-  S: string;
-  k: integer; { глобальная переменная }
+  Line: string;
+  Count: integer; { глобальная переменная }
 
-  procedure Scan(arg: string);
+  procedure Scan(LineSent: string);
   var
-    k: integer; { локальная переменная }
+    CountA: integer; { локальная переменная }
   begin
-    for k := 1 to Length(arg) do
-      if arg[k] = 'A' then arg[k] := 'B';
+    for CountA := 1 to Length(LineSent) do
+      if LineSent[CountA] = 'A' then LineSent[CountA] := 'B';
   end;
 
 begin { главная программа }
-  for k := 1 to 3 do
+  for Count := 1 to 3 do
   begin
     Write('Введите строку: ');
-    Readln(S);
-    Scan(S);
-    Writeln(S);
+    Readln(Line);
+    Scan(Line);
+    Writeln(Line);
   end;
 end.
