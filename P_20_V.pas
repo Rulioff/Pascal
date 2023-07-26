@@ -13,6 +13,8 @@ program P_20_V;
 {$codepage UTF8}
 
 procedure HRDepartment(VacationStarts1, VacationStarts2, VacationEnd2: integer);
+var
+  Vacation: string;
 begin
 
 end;
