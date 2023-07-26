@@ -11,8 +11,10 @@ var
 
   procedure Multiplicity(Divisible: integer);
   begin
-repeat
-until
+for Index 2 to Divider div 2 do
+  if Divider mod Index = 0 then
+  WriteLn(Index);
+ReadLn;
   end;
 
 begin
