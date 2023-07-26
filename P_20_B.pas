@@ -7,20 +7,19 @@ program P_20_B;
 {$mode objfpc}{$H+}
 {$codepage UTF8}
 var
-  Divisible, Divider, Quotient, Index: integer;
+  Divisible, Divider: integer;
 
   procedure Multiplicity(Divisible: integer);
   begin
-for Index 2 to Divider div 2 do
-  if Divider mod Index = 0 then
-  WriteLn(Index);
-ReadLn;
+    WriteLn('Число ', Divisible, ' кратно числам: ');
+    for Divider := 2 to Divisible div 2 do
+      if Divisible mod Divider = 0 then
+        WriteLn(Divider);
+    ReadLn;
   end;
 
 begin
   Write('Введите число для определения кратности: ');
   ReadLn(Divisible);
   Multiplicity(Divisible);
-  Quotient:= Divisible / Divisible;
-  WriteLn(Divisible, '/', Divider, '=', Quotient);
 end.
