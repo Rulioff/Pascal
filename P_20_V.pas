@@ -12,18 +12,40 @@ program P_20_V;
 {$mode objfpc}{$H+}
 {$codepage UTF8}
 
-procedure HRDepartment(VacationStarts1, VacationStarts2, VacationEnd2: integer);
-var
-  Vacation: string;
-begin
+  procedure HRDepartment(VacationStarts1, VacationStarts2, VacationEnd1,
+    VacationEnd2: integer);
 
-end;
+  var
+    Vacation: string;
+  begin
+    if VacationEnd2 > VacationEnd1 then
+    begin
+      if VacationStarts2 - VacationEnd1 > 3 then
+        Vacation := 'Отпуск второго одобрен!'
+      else
+        Vacation :=
+          'На передачу дел нужно 3 дня, в отпуск вторму рано.';
+    end
+    else
+    begin
+      if VacationEnd2 - VacationStarts1 > 3 then
+        Vacation := 'Отпуск первого одобрен!'
+      else
+        Vacation :=
+          'На передачу дел нужно 3 дня, в отпуск первому рано.';
+    end;
+    WriteLn(Vacation);
+  end;
 
 var
-  VacationStarts1, VacationStarts2, VacationEnd2: integer;
+  VacationStarts1, VacationStarts2, VacationEnd1, VacationEnd2: integer;
 begin
-  WriteLn('Пожалуйста введите сроки первого и вотрого отпускника: ');
-  ReadLn; (VacationStarts1, VacationStarts2, VacationEnd2);
-  HRDepartment(VacationStarts1, VacationStarts2, VacationEnd2);
+  WriteLn('Пожалуйста введите сроки первого отпускника: ');
+  ReadLn(VacationStarts1, VacationEnd1);
+
+  WriteLn('Пожалуйста введите сроки второго отпускника: ');
+  ReadLn(VacationStarts2, VacationEnd2);
+
+  HRDepartment(VacationStarts1, VacationStarts2, VacationEnd1, VacationEnd2);
   ReadLn;
 end.
