@@ -23,8 +23,29 @@ program P_20_G;
 
   var
     Decision: string;
+    NatureType: boolean;
 
   begin
+    case Nature of
+      //1- послушный и осторожный — учитывает и светофор и опасность
+      1: NatureType := Light and not Danger;
+      //2 - послушный, но беспечный — смотрит только на светофор;
+      2: NatureType := Light;
+      //3 - хитрый вольнодумец — идет только на красный, если это ничем не грозит;
+      3: NatureType := not Light and not Danger;
+      //4 - непримиримый вольнодумец — идет только на красный;
+      4: NatureType := not Light;
+      //5 - экстремал — идет только на красный, и так, чтобы грозила опасность;
+      5: NatureType := not Light and Danger;
+      //6 - «безбашенный» — идет, несмотря ни на что;
+      6: NatureType := True;
+      //7 - запуганный — никогда не идет через дорогу, а ищет подземный переход.}
+      7: NatureType := False;
+    end;
+    if NatureType then
+      Decision := 'Идете, пожалуйста!'
+    else
+      Decision := 'Подождите, пожалуйста!';
     WriteLn(Decision);
   end;
 
@@ -38,12 +59,12 @@ begin
     Write('Введите от 1 .. до 7 цифры соответствующие типу характера пешехода, пожалуйста: ');
     ReadLn(Nature);
     if Nature = 0 then Break;
-    Write('Сигнал светофора зелёный?');
+    Write('Сигнал светофора зелёный? ');
     ReadLn(Answer);
-    Light:= Answer = 'Да';
-    WriteLn('Есть опасность?');
-    ReadLn(Danger);
-    Danger:= Answer = 'Да';
+    Light := (Answer = 'Да') or (Answer = 'да');
+    Write('Есть опасность? ');
+    ReadLn(Answer);
+    Danger := (Answer = 'Да') or (Answer = 'да');
     Crosswalk(Light, Danger, Nature);
   until False;
 end.
