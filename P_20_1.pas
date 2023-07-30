@@ -12,7 +12,7 @@ var
   Line: string;
   Index: integer; { глобальная переменная }
 
-  procedure Scan(LineSent: string);
+  procedure Scan(var LineSent: string);
   var
     Index: integer; { локальная переменная }
   begin
@@ -28,5 +28,6 @@ begin { главная программа }
     Readln(Line);
     Scan(Line);
     Writeln(Line);
+    ReadLn;
   end;
 end.
