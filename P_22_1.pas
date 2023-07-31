@@ -6,25 +6,25 @@ program P_22_1;
 {$codepage UTF8}
 
   // процедура обмена
-  procedure SWAP(var x, y: integer);
+  procedure Swap(var First, Second: integer);
   var
-    t: integer;
+    Buffer: integer;
 
   begin
-    t := x;
-    x := y;
-    y := t;
+    Buffer := First;
+    First := Second;
+    Second := Buffer;
   end;
 
 var
-  A, B: integer;
+  NumberOne, NumberTwo: integer;
 
   //--- главная программа ---
 begin
-  A := 10;
-  B := 20;
-  Writeln('A= ', A, ' B= ', B);
-  SWAP(A, B);
-  Writeln('A= ', A, ' B= ', B);
+  NumberOne := 10;
+  NumberTwo := 20;
+  Writeln('A= ', NumberOne, ' B= ', NumberTwo);
+  Swap(NumberOne, NumberTwo);
+  Writeln('A= ', NumberOne, ' B= ', NumberTwo);
   Readln;
 end.
