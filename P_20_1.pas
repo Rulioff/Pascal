@@ -12,13 +12,13 @@ var
   Line: string;
   Index: integer; { глобальная переменная }
 
-  procedure Scan(var LineSent: string);
+  procedure Scan(var LineSent: string; SymbolOne, SymbolTwo: char);
   var
     Index: integer; { локальная переменная }
   begin
     for Index := 1 to Length(LineSent) do
-      if LineSent[Index] = 'A' then
-        LineSent[Index] := 'B';
+      if LineSent[Index] = SymbolOne then
+        LineSent[Index] := SymbolTwo;
   end;
 
 begin { главная программа }
