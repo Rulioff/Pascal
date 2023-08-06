@@ -4,20 +4,22 @@ program P_23_1;
 {$mode objfpc}{$H+}
 {$codepage UTF8}
 
-function Count(const str : string; ch: char): integer;
-var N, i: integer;
-begin
-N:=0; { обнуляем счетчик }
-for i:=1 to Length(str) do
-if str[i]=ch then N:= N+1;
-Count:= N; { передаем результат через имя функции }
-end;
+  function CountSymbol(const LineSent: string; Symbol: char): integer;
+  var
+    Count, Index: integer;
+  begin
+    Count := 0; { обнуляем счетчик }
+    for Index := 1 to Length(LineSent) do
+      if LineSent[Index] = Symbol then Count := Count + 1;
+    CountSymbol := Count;
+    { передаем результат через имя функции }
+  end;
 
-var S: string;
+var
+  Line: string;
 begin {--- главная программа ---}
-S:='PASCAL';
-Writeln( Count(S, 'A'));
-Writeln( Count('BANAN', 'N') + Count('BANAN', 'B'));
-Readln;
+  Line := 'PASCAL';
+  Writeln(CountSymbol(Line, 'A'));
+  Writeln(CountSymbol('BANAN', 'N') + CountSymbol('BANAN', 'B'));
+  Readln;
 end.
-
