@@ -11,14 +11,14 @@ var
   Symbol: char;
   Res: integer;
 
-  procedure Calc(const LineSent: string; var Symbol: char; var Res: integer);
+  procedure Calc(const LineSent: string; var Symbol: char; var Count: integer);
   var
     Index: integer;
   begin
-    Res := 0;
+
     for Index := 1 to Length(LineSent) do
       if LineSent[Index] = Symbol then
-        Res := Res + 1;
+        Count := Count + 1;
   end;
 
 begin { главная программа }
@@ -26,6 +26,7 @@ begin { главная программа }
   Readln(Line);
   Write('Введите символ, чтобы узнать его количество в строке, пожалуйста: ');
   Readln(Symbol);
+  Res := 0;
   Calc(Line, Symbol, Res);
   Writeln('Строка ', Line, ' содержит ', Res, ' ', Symbol);
   ReadLn;
