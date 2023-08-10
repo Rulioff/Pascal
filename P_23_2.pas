@@ -15,7 +15,7 @@ var
     for Index := 1 to Length(LineSent) do
       if LineSent[Index] = 'A' then
         LineSent[Index] := 'B'; { замена в параметре LineSent }
-    Scan := LineSent;
+    Result := LineSent;
   end;
 
 begin { главная программа }
