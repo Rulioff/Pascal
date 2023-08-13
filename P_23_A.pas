@@ -22,6 +22,7 @@ begin
   Write('Введите строку, пожалуйста: ');
   Readln(Line);
   FindSymbol(Line);
-  Writeln(FindSymbol(Line));
+  Writeln('В строке присутствует символ - A: ',
+    FindSymbol(Line), '.');
   ReadLn;
 end.
