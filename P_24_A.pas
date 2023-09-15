@@ -1,47 +1,44 @@
 { P_24_A Измените программу шифрования с тем, чтобы ключ задавать с
 клавиатуры и передавать в процедуры и функции через параметр. Заголовки
 процедур и функций сделайте такими:
-function EncryptChar(Symbol: char; key: integer): char;
-procedure EncryptStr(var Symbol: string; key: integer). }
+function EncryptChar(Symbol: char; Key: integer): char;
+procedure EncryptStr(var Symbol: string; Key: integer). }
 program P_24_A;
 
 {$mode objfpc}{$H+}
 {$codepage UTF8}
 
-const
-  CKey = 2;
-  { Ключ Цезаря }
   {––––– Зашифровка одного символа –––––}
-  function Encrypt(Symbol: char): char;
+  function EncryptChar(Symbol: char; Key: integer): char;
   var
     PosChar: integer;
   begin
-    PosChar := Ord(Symbol) + CKey;
+    PosChar := Ord(Symbol) + Key;
     if PosChar > 255 then PosChar := PosChar - 256 + 32;
-    Encrypt := Chr(PosChar);
+    EncryptChar := Chr(PosChar);
   end;
 
   {––––– Расшифровка одного символа –––––}
-  function Decrypt(Symbol: char): char;
+  function Decrypt(Symbol: char; Key: integer): char;
   var
     PosChar: integer;
   begin
-    PosChar := Ord(Symbol) - CKey;
+    PosChar := Ord(Symbol) - Key;
     if PosChar < 32 then PosChar := PosChar + 256 - 32;
     Decrypt := Chr(PosChar);
   end;
 
   {––––– Зашифровка строки –––––}
-  procedure EncryptStr(var Symbol: string);
+  procedure EncryptStr(var Symbol: string; Key: integer);
   var
     CountSymbol: integer;
   begin
     for CountSymbol := 1 to Length(Symbol) do
-      Symbol[CountSymbol] := Encrypt(Symbol[CountSymbol]);
+      Symbol[CountSymbol] := EncryptChar(Symbol[CountSymbol]);
   end;
 
   {––––– Расшифровка строки –––––}
-  procedure DecryptStr(var Symbol: string);
+  procedure DecryptStr(var Symbol: string; Key: integer);
   var
     CountSymbol: integer;
   begin
@@ -66,6 +63,8 @@ begin
       else
         Break;
     end;
+    Write('Введите ключ Цезаря: '); { Ключ Цезаря }
+    Readln(Key);
     Writeln(Line); { печатаем результат }
   until False;
 end.
