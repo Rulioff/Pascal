@@ -7,8 +7,10 @@ program P_24_A;
 
 {$mode objfpc}{$H+}
 {$codepage UTF8}
+uses
+  SysUtils;
 
-  {––––– Зашифровка одного символа –––––}
+{––––– Зашифровка одного символа –––––}
   function EncryptChar(Symbol: char; Key: integer): char;
   var
     PosChar: integer;
@@ -19,13 +21,13 @@ program P_24_A;
   end;
 
   {––––– Расшифровка одного символа –––––}
-  function Decrypt(Symbol: char; Key: integer): char;
+  function DecryptChar(Symbol: char; Key: integer): char;
   var
     PosChar: integer;
   begin
     PosChar := Ord(Symbol) - Key;
     if PosChar < 32 then PosChar := PosChar + 256 - 32;
-    Decrypt := Chr(PosChar);
+    DecryptChar := Chr(PosChar);
   end;
 
   {––––– Зашифровка строки –––––}
@@ -34,7 +36,7 @@ program P_24_A;
     CountSymbol: integer;
   begin
     for CountSymbol := 1 to Length(Symbol) do
-      Symbol[CountSymbol] := EncryptChar(Symbol[CountSymbol]);
+      Symbol[CountSymbol] := EncryptChar(Symbol[CountSymbol], Key);
   end;
 
   {––––– Расшифровка строки –––––}
@@ -43,28 +45,30 @@ program P_24_A;
     CountSymbol: integer;
   begin
     for CountSymbol := 1 to Length(Symbol) do
-      Symbol[CountSymbol] := Decrypt(Symbol[CountSymbol]);
+      Symbol[CountSymbol] := DecryptChar(Symbol[CountSymbol]);
   end;
 
   {––––– Главная программа –––––}
 var
   Line: string;
+  Key: integer;
   Operation: integer;
 begin
   repeat
+    Write('Введите ключ Цезаря от 1 до 25: ');
+    Readln(Key);
     Write('Введите строку: ');
     Readln(Line);
     Writeln('Укажите операцию: 1– шифровать,' +
       ' 2– расшифровать,' + ' Прочие – выход');
     Readln(Operation);
     case Operation of
-      1: EncryptStr(Line);
-      2: DecryptStr(Line);
+      1: EncryptStr(Line, Key);
+      2: DecryptStr(Line, Key);
       else
         Break;
     end;
-    Write('Введите ключ Цезаря: '); { Ключ Цезаря }
-    Readln(Key);
+
     Writeln(Line); { печатаем результат }
   until False;
 end.
