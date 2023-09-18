@@ -45,7 +45,7 @@ uses
     CountSymbol: integer;
   begin
     for CountSymbol := 1 to Length(Symbol) do
-      Symbol[CountSymbol] := DecryptChar(Symbol[CountSymbol]);
+      Symbol[CountSymbol] := DecryptChar(Symbol[CountSymbol], Key);
   end;
 
   {––––– Главная программа –––––}
