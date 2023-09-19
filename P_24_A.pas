@@ -57,11 +57,14 @@ begin
   repeat
     Write('Введите ключ Цезаря от 1 до 25: ');
     Readln(Key);
+
     Write('Введите строку: ');
     Readln(Line);
+
     Writeln('Укажите операцию: 1– шифровать,' +
       ' 2– расшифровать,' + ' Прочие – выход');
     Readln(Operation);
+
     case Operation of
       1: EncryptStr(Line, Key);
       2: DecryptStr(Line, Key);
