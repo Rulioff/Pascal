@@ -27,7 +27,8 @@ begin
   for Symbol := char(33) to char(255) do
   begin
     Marker := False;
-    for Index := 1 to Length(Line) do if Symbol = Line[Index] then
+    for Index := 1 to Length(Line) do
+      if Symbol = Line[Index] then
       begin
         if not Marker then
           Write(Symbol, ' - ');
