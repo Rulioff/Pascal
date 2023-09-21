@@ -5,7 +5,7 @@
 A – 2 5
 C – 4
 L – 6
-p – 1
+P – 1
 S – 3}
 program P_24_V;
 
