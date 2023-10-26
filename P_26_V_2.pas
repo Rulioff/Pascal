@@ -10,7 +10,7 @@ uses
 
 var
   SourceTextFile, OutputTextFile: Text;
-  LineNumber, RearrangingLine, NewLineNumber: integer;
+  LineNumber, NewLineNumber: integer;
 
   function GetFileLinesNumber(var SourceTxtFile: Text): integer;
 
@@ -43,21 +43,13 @@ var
   end;
 
 begin
-  LineNumber := 0;
   Assign(SourceTextFile, 'Source_Text_26_V.txt');
-  Assign(OutputTextFile, 'Output_Text_26_V_2.txt');
+  Assign(OutputTextFile, 'Output_Text_26_V_1.txt');
+
   Rewrite(OutputTextFile);
   LineNumber := GetFileLinesNumber(SourceTextFile);
-  RearrangingLine := 0;
-  NewLineNumber := 1;
-  repeat
-    if RearrangingLine mod 2 = 0 then
-      NewLineNumber := (RearrangingLine - 1)
-    else
-      NewLineNumber := (RearrangingLine + 1);
+  for NewLineNumber := LineNumber downto 1 do
     WriteLn(OutputTextFile, GetFileLineByNumber(SourceTextFile, NewLineNumber));
-    Inc(RearrangingLine);
-  until RearrangingLine > LineNumber;
 
   Close(SourceTextFile);
   Close(OutputTextFile);
