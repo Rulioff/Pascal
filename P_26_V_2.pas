@@ -1,5 +1,4 @@
-{P_26_V_2 Скопировать один файл в другой:
-· с перестановкой строк в обратном порядке (см. условие задачи «Е» к 25-й
+{P_26_V_2 Скопировать один файл в другой с перестановкой строк в обратном порядке (см. условие задачи «Е» к 25-й
 главе).}
 program P_26_V_2;
 
@@ -10,46 +9,46 @@ uses
 
 var
   SourceTextFile, OutputTextFile: Text;
-  LineNumber, NewLineNumber: integer;
+  SourceLineNumber, OutputLineNumber: integer;
 
-  function GetFileLinesNumber(var SourceTxtFile: Text): integer;
+  function GetFileLinesNumber(var TxtFile: Text): integer;
 
   var
     Line: string;
-    LineNumberSource: integer;
+    LineNumber: integer;
 
   begin
-    LineNumberSource := 0;
-    Reset(SourceTxtFile);
-    while not EOF(SourceTxtFile) do
+    LineNumber := 0;
+    Reset(TxtFile);
+    while not EOF(TxtFile) do
     begin
-      ReadLn(SourceTxtFile, Line);
-      Inc(LineNumberSource);
+      ReadLn(TxtFile, Line);
+      Inc(LineNumber);
     end;
-    Result := LineNumberSource;
+    Result := LineNumber;
   end;
 
-  function GetFileLineByNumber(var SourceTxtFile: Text; LastLineTxt: integer): string;
+  function GetFileLineByNumber(var TxtFile: Text; LastLineNumber: integer): string;
 
   var
     CurrentLine: string;
     Index: integer;
 
   begin
-    Reset(SourceTxtFile);
-    for Index := 1 to LastLineTxt do
-      ReadLn(SourceTxtFile, CurrentLine);
+    Reset(TxtFile);
+    for Index := 1 to LastLineNumber do
+      ReadLn(TxtFile, CurrentLine);
     Result := CurrentLine;
   end;
 
 begin
   Assign(SourceTextFile, 'Source_Text_26_V.txt');
-  Assign(OutputTextFile, 'Output_Text_26_V_1.txt');
+  Assign(OutputTextFile, 'Output_Text_26_V_2.txt');
 
   Rewrite(OutputTextFile);
-  LineNumber := GetFileLinesNumber(SourceTextFile);
-  for NewLineNumber := LineNumber downto 1 do
-    WriteLn(OutputTextFile, GetFileLineByNumber(SourceTextFile, NewLineNumber));
+  SourceLineNumber := GetFileLinesNumber(SourceTextFile);
+  for OutputLineNumber := SourceLineNumber downto 1 do
+    WriteLn(OutputTextFile, GetFileLineByNumber(SourceTextFile, OutputLineNumber));
 
   Close(SourceTextFile);
   Close(OutputTextFile);

@@ -9,44 +9,44 @@ uses
 
 var
   SourceTextFile, OutputTextFile: Text;
-  LineNumber, RearrangingLine, NewLineNumber: integer;
+  SourceLineNumber, RearrangingLine, NewLineNumber: integer;
 
-  function GetFileLinesNumber(var SourceTxtFile: Text): integer;
+  function GetFileLinesNumber(var TxtFile: Text): integer;
 
   var
     Line: string;
-    LineNumberSource: integer;
+    LineNumber: integer;
 
   begin
-    LineNumberSource := 0;
-    Reset(SourceTxtFile);
-    while not EOF(SourceTxtFile) do
+    LineNumber := 0;
+    Reset(TxtFile);
+    while not EOF(TxtFile) do
     begin
-      ReadLn(SourceTxtFile, Line);
-      Inc(LineNumberSource);
+      ReadLn(TxtFile, Line);
+      Inc(LineNumber);
     end;
-    Result := LineNumberSource;
+    Result := LineNumber;
   end;
 
-  function GetFileLineByNumber(var SourceTxtFile: Text; LastLineTxt: integer): string;
+  function GetFileLineByNumber(var TxtFile: Text; LastLineNumber: integer): string;
 
   var
     CurrentLine: string;
     Index: integer;
 
   begin
-    Reset(SourceTxtFile);
-    for Index := 1 to LastLineTxt do
-      ReadLn(SourceTxtFile, CurrentLine);
+    Reset(TxtFile);
+    for Index := 1 to LastLineNumber do
+      ReadLn(TxtFile, CurrentLine);
     Result := CurrentLine;
   end;
 
 begin
-  LineNumber := 0;
+  SourceLineNumber := 0;
   Assign(SourceTextFile, 'Source_Text_26_V.txt');
-  Assign(OutputTextFile, 'Output_Text_26_V_2.txt');
+  Assign(OutputTextFile, 'Output_Text_26_V_1.txt');
   Rewrite(OutputTextFile);
-  LineNumber := GetFileLinesNumber(SourceTextFile);
+  SourceLineNumber := GetFileLinesNumber(SourceTextFile);
   RearrangingLine := 0;
   NewLineNumber := 1;
   repeat
@@ -56,7 +56,7 @@ begin
       NewLineNumber := (RearrangingLine + 1);
     WriteLn(OutputTextFile, GetFileLineByNumber(SourceTextFile, NewLineNumber));
     Inc(RearrangingLine);
-  until RearrangingLine > LineNumber;
+  until RearrangingLine > SourceLineNumber;
 
   Close(SourceTextFile);
   Close(OutputTextFile);
