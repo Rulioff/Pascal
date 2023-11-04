@@ -10,7 +10,7 @@ uses
   SysUtils;
 
 var
-  SourceTextFile, OddLinesSourceFile, EvenLinesSourceFile: Text;
+  SourceTextFile, OddLinesTargetFile, EvenLinesTargetFile: Text;
   SourceLineNumber, CurrentLineNumber: integer;
 
   function GetFileLinesNumber(var TextFile: Text): integer;
@@ -19,7 +19,7 @@ var
     Line: string;
 
   begin
-    LineNumber := 1;
+    LineNumber := 0;
     Reset(TextFile);
     while not EOF(TextFile) do
     begin
@@ -43,34 +43,35 @@ var
 
 begin
   Assign(SourceTextFile, 'Source_Text_26_G.txt');
-  Assign(OddLinesSourceFile, 'Odd_Lines_Source_File_26_G.txt');
-  Assign(EvenLinesSourceFile, 'Even_Lines_SourceFile_26_G.txt');
-  Rewrite(OddLinesSourceFile);
-  Rewrite(EvenLinesSourceFile);
+  Assign(OddLinesTargetFile, 'Odd_Lines_Source_File_26_G.txt');
+  Assign(EvenLinesTargetFile, 'Even_Lines_SourceFile_26_G.txt');
+
+  Rewrite(OddLinesTargetFile);
+  Rewrite(EvenLinesTargetFile);
+
   SourceLineNumber := GetFileLinesNumber(SourceTextFile);
   CurrentLineNumber := 1;
 
   while CurrentLineNumber <= SourceLineNumber do
   begin
-    if (CurrentLineNumber mod 2 <> 0) and (CurrentLineNumber <
-      (SourceLineNumber - 2)) then
-      WriteLn(OddLinesSourceFile, GetFileLinesByNumber(SourceTextFile,
-        CurrentLineNumber))
-    else if (CurrentLineNumber mod 2 <> 0) and (CurrentLineNumber <=
-      (SourceLineNumber - 1)) then
-      Write(OddLinesSourceFile, GetFileLinesByNumber(SourceTextFile,
-        CurrentLineNumber))
-    else if (CurrentLineNumber mod 2 = 0) and (CurrentLineNumber <
-      (SourceLineNumber - 2)) then
-      WriteLn(EvenLinesSourceFile, GetFileLinesByNumber(SourceTextFile,
-        CurrentLineNumber))
-    else
-      Write(EvenLinesSourceFile, GetFileLinesByNumber(SourceTextFile,
+    if (CurrentLineNumber mod 2 <> 0) and (CurrentLineNumber < SourceLineNumber - 1) then
+      WriteLn(OddLinesTargetFile, GetFileLinesByNumber(SourceTextFile,
+        CurrentLineNumber));
+    if (CurrentLineNumber mod 2 = 0) and (CurrentLineNumber < SourceLineNumber - 1) then
+      WriteLn(EvenLinesTargetFile, GetFileLinesByNumber(SourceTextFile,
+        CurrentLineNumber));
+    if (CurrentLineNumber mod 2 <> 0) and (CurrentLineNumber >= SourceLineNumber - 1) then
+      Write(OddLinesTargetFile, GetFileLinesByNumber(SourceTextFile,
+        CurrentLineNumber));
+    if (CurrentLineNumber mod 2 = 0) and (CurrentLineNumber >= SourceLineNumber - 1) then
+      Write(EvenLinesTargetFile, GetFileLinesByNumber(SourceTextFile,
         CurrentLineNumber));
     Inc(CurrentLineNumber);
   end;
+
   Close(SourceTextFile);
-  Close(OddLinesSourceFile);
-  Close(EvenLinesSourceFile);
+  Close(OddLinesTargetFile);
+  Close(EvenLinesTargetFile);
+
   ReadLn;
 end.
