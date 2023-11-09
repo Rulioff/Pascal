@@ -1,0 +1,5 @@
+﻿2+3 	- is correct, although there are no brackets;
+(2+3 	- is an error – there is no closing parenthesis here;
+()2+3() 	- is correct (although it doesn't make sense);
+))2+3((	– error – brackets are closed before opening.
+)(()		- is new error.
