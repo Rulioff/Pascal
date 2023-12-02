@@ -1,0 +1,6 @@
+﻿Akulova 175 55
+Bulls 154 47
+Wolves 176 95
+Galkina 190 77
+Krokodylkin 178 70
+Tukov 174 78
